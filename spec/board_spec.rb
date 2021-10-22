@@ -20,10 +20,29 @@ module TicTacToe
         end
       end
     end
+
     context "#grid" do
       it "returns the grid" do
         board = Board.new(grid: "blah")
         expect(board.grid).to eq "blah"
+      end
+    end
+
+    context "#get_cell" do
+      it "returns the cell based on the (x, y) coordinate" do
+        grid = [["", "", ""], ["", "", "something"], ["", "", ""]]
+        board = Board.new(grid: grid)
+        expect(board.get_cell(2, 1)).to eq "something"
+      end
+    end
+
+    context "#set_cell" do
+      it "updates the value of the cell object at a (x, y) coordinate" do
+        Cat = Struct.new(:value)
+        grid = [[Cat.new("cool"), "", ""], ["", "", ""], ["", "", ""]]
+        board = Board.new(grid: grid)
+        board.set_cell(0, 0, "meow")
+        expect(board.get_cell(0, 0).value).to eq "meow"
       end
     end
   end
