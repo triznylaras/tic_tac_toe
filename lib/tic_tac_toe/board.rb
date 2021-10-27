@@ -48,9 +48,8 @@ module TicTacToe
     end
 
     def winning_positions
-      grid + # rows
-      grid.transpose + # columns
-      diagonals # two diagonals
+      # rows + columns + two diagonals
+      grid + grid.transpose + diagonals
     end
      
     def diagonals
