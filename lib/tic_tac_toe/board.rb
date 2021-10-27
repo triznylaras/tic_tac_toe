@@ -32,7 +32,7 @@ module TicTacToe
     end
 
     def draw?
-      grid.flatten.map { |cell| cell.value }.none_empty?
+      grid.flatten.map(&:value).none_empty?
     end
 
     def winner?
