@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module TicTacToe
-  # class to set the game to  be played
+  # Class for set up and run the game
   class Game
     attr_reader :players, :board, :current_player, :other_player
 
@@ -54,17 +54,11 @@ module TicTacToe
     private
 
     def human_move_to_coordinate(human_move)
-      mapping = {
-        "1" => [0, 0],
-        "2" => [1, 0],
-        "3" => [2, 0],
-        "4" => [0, 1],
-        "5" => [1, 1],
-        "6" => [2, 1],
-        "7" => [0, 2],
-        "8" => [1, 2],
-        "9" => [2, 2]
-      }
+      mapping = {}
+      pos_array = [[0, 0], [1, 0], [2, 0], [0, 1], [1, 1], [2, 1], [0, 2], [1, 2], [2, 2]]
+      pos_array.each_with_index do |pos, index|
+        mapping[(index + 1).to_s] = pos
+      end
       mapping[human_move]
     end
   end
