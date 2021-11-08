@@ -4,7 +4,7 @@ source: https://en.wikipedia.org/wiki/Tic-tac-toe
 
 ## Installation
 
-You can download the project files by clicking **download** at the top right.
+You can download the project files by click **code -> clone** or **code -> download zip** at the top right.
 
 ## Usage
 
