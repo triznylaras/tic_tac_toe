@@ -3,19 +3,20 @@ require 'spec_helper'
 module TicTacToe
   Cat = Struct.new(:value)
   TestCell = Struct.new(:value)
+
   describe Board do
+    let(:board) { Board.new }
+
     context '#initialize' do
       it 'initializes the board with a grid' do
         expect { Board.new(grid: 'grid') }.to_not raise_error
       end
 
       it 'sets the grid with three rows by default' do
-        board = Board.new
         expect(board.grid.size).to eq(3)
       end
 
       it 'creates three things in each row by default' do
-        board = Board.new
         board.grid.each do |row|
           expect(row.size).to eq(3)
         end
@@ -52,20 +53,17 @@ module TicTacToe
 
     context '#game_over' do
       it 'returns :winner if winner? is true' do
-        board = Board.new
         allow(board).to receive(:winner?) { true }
         expect(board.game_over).to eq :winner
       end
 
       it 'returns :draw if winner? is false and draw? is true' do
-        board = Board.new
         allow(board).to receive(:winner?) { false }
         allow(board).to receive(:draw?) { true }
         expect(board.game_over).to eq :draw
       end
 
       it 'returns false if winner? is false and draw? is false' do
-        board = Board.new
         allow(board).to receive(:winner?) { false }
         allow(board).to receive(:draw?) { false }
         expect(board.game_over).to be_falsey
